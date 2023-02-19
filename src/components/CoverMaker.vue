@@ -3,7 +3,7 @@
  * @Description: Description
  * @Author: Kerwin
  * @Date: 2023-02-12 20:56:28
- * @LastEditTime: 2023-02-14 17:23:28
+ * @LastEditTime: 2023-02-15 15:50:01
  * @LastEditors:  Please set LastEditors
 -->
 
@@ -38,6 +38,7 @@ const form = reactive({
   py: "yáng hé qǐ zhé",
   font: fontOptions[0].value,
   desc: "指恶劣困苦的日子过去，顺利和美好的时光开始了",
+  ratio: 2
 });
 const reg = new RegExp("[\\u4E00-\\u9FFF]+", "g");
 const py = computed(() => {
@@ -67,6 +68,8 @@ const doPickRandom = () => {
 
 
 
+
+
 const loading = ref(false)
 // 图片生成
 const imageWrapper = ref(null) as any;
@@ -75,7 +78,7 @@ function clickGeneratePicture() {
   html2canvas(imageWrapper.value, {
     logging: false,
     allowTaint: true,
-    scale: window.devicePixelRatio * 2,
+    scale: window.devicePixelRatio * form.ratio,
     // width: shareContent.clientWidth, //dom 原始宽度
     // height: shareContent.clientHeight,
     scrollY: 0,
@@ -118,6 +121,14 @@ function clickGeneratePicture() {
           <el-form-item label="字体选择">
             <el-select v-model="form.font" @change="setFont">
               <el-option :value="item.value" :label="item.name" v-for="item in fontOptions" :key="item.value" />
+            </el-select>
+          </el-form-item>
+          <el-form-item label="清晰度">
+            <el-select v-model="form.ratio">
+              <el-option :value="2" label="2倍" />
+              <el-option :value="3" label="3倍" />
+              <el-option :value="4" label="4倍" />
+              <el-option :value="5" label="5倍" />
             </el-select>
           </el-form-item>
           <el-form-item label="成语拼音">

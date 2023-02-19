@@ -2,7 +2,7 @@
  * @Description: Description
  * @Author: Kerwin
  * @Date: 2023-02-13 13:21:17
- * @LastEditTime: 2023-02-14 12:44:26
+ * @LastEditTime: 2023-02-15 16:49:08
  * @LastEditors:  Please set LastEditors
 -->
 <script setup lang="ts">
@@ -34,7 +34,7 @@ const menu = reactive(routes)
 <template>
     <header class="header">
         <el-menu :default-active="activeIndex" class="el-menu-demo border0" mode="horizontal" @select="handleSelect">
-            <el-menu-item index="0"><img class="logo" src="@/assets/img/long_logo.png" alt=""></el-menu-item>
+            <el-menu-item index="/"><img class="logo" src="@/assets/img/long_logo.png" alt=""></el-menu-item>
             <div class="flex-grow" />
             <el-menu-item :index="item.path" v-for="item in menu" ::key="item.path">{{ item.name }}</el-menu-item>
             <el-menu-item index="void" @click="toggleTheme"><span>切换主题</span> <el-icon :size="16">
